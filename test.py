@@ -1,10 +1,14 @@
-from flask import Flask, request, jsonify
-
+from flask import Flask
 application = app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return 'Hello, World!'
+    return 'Hello, World! :)'
+
+if __name__ == '__main__':
+    app.run()
+
+
 
 @app.route('/mission/<int:mission_category>', methods=['GET'])
 def get_mission_details(mission_category):
@@ -54,6 +58,3 @@ def get_mission_details(mission_category):
         return jsonify({"message": "Mission category 3 동작 수행"}), 200
     else:
         return jsonify({"message": "해당 mission category는 지원되지 않습니다."}), 404
-
-if __name__ == '__main__':
-    app.run()

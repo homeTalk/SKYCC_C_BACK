@@ -31,4 +31,6 @@ app.run()
 pip install awsebcli
 eb init
 
-자세한 내용 다음 링크 참고: https://velog.io/@lzlko/%EA%B0%95%EC%9D%98-%EC%8A%A4%ED%8C%8C%EB%A5%B4%ED%83%80-%EC%BD%94%EB%94%A9%ED%81%B4%EB%9F%BD-%EC%9B%B9%EA%B0%9C%EB%B0%9C-%ED%92%80%EC%8A%A4%ED%83%9D-5%EC%A3%BC%EC%B0%A8og%ED%83%9C%EA%B7%B8-%EB%B0%8F-%EB%B0%B0%ED%8F%AC
+### 수정사항 반영
+
+eb deploy dajungEnv
