@@ -21,7 +21,7 @@ def helppage():
 
 @application.route("/hello")
 def index():
-    return "Hello World from Flask Hello Page.<b> v1.0"
+    return "Hello World from Flask Hello Page.<b> v1.0" 
 
 #--------Main------------------
 if __name__ == "__main__":
