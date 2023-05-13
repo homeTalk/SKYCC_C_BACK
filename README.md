@@ -32,3 +32,8 @@
 ### 코드 수정사항 반영 명령어
 - eb deploy dajungEnv
     - 해당 명령어를 입력하면 자동으로 elastic beanstalk에 배포됨.
+
+
+### ERD
+![erd](https://github.com/skycc-dajung/SKYCC_C_BACK/assets/75142329/e1d1e759-2c4d-4f15-a8f3-e73c03472985)
+- 테이블은 최상위 디렉토리에 있는 create_table.sql 파일을 사용했습니다.
