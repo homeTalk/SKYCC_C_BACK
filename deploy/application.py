@@ -45,15 +45,39 @@ def get_mission_details(mission_category):
 
         return jsonify(response), 200
     elif mission_category == 2:
-        # mission_category가 2인 경우에 대한 동작을 수행합니다.
+        # mission_category가 2인 경우에 대한 동작을 수행
         # TODO: mission_category가 2인 경우의 동작 구현
         return jsonify({"message": "Mission category 2 동작 수행"}), 200
     elif mission_category == 3:
-        # mission_category가 3인 경우에 대한 동작을 수행합니다.
+        # mission_category가 3인 경우에 대한 동작을 수행
         # TODO: mission_category가 3인 경우의 동작 구현
         return jsonify({"message": "Mission category 3 동작 수행"}), 200
     else:
         return jsonify({"message": "해당 mission category는 지원되지 않습니다."}), 404
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+
+    response = {
+        "message": "회원 가입이 성공적으로 완료되었습니다."
+    }
+    return jsonify(response), 201
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    response = {
+        "message": "로그인이 성공적으로 완료되었습니다."
+    }
+    return jsonify(response), 200
+
 
 if __name__ == '__main__':
     app.run()
