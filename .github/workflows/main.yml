@@ -10,7 +10,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Install Python
-              run: sudo apt install python3.8
+              run: sudo apt install python3.9
             - name: Install Pip
               run: sudo apt install python3-pip
             - name: Install Flask
