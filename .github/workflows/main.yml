@@ -1,24 +1,26 @@
-on:
-    push:
-      branches:
-        - main
 name: Deploy to Elastic Beanstalk
 
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: Install Python
-              run: sudo apt install python3.11
-            - name: Install Pip
-              run: sudo apt install python3-pip
-            - name: Install Flask
-              run: pip3 install Flask
-            - name: Build Flask application
-              run: python3 -m flask run
-            - name: Deploy Flask application to Elastic Beanstalk
-              run: |
-                aws elasticbeanstalk create-application --application-name ${{ secrets.AWS_APPLICATION_NAME }}
-                aws elasticbeanstalk create-environment --application-name ${{ secrets.AWS_APPLICATION_NAME }} --environment-name ${{ secrets.AWS_ENVIRONMENT_NAME }} --platform ${{ secrets.AWS_PLATFORM }} --tier ${{ secrets.AWS_TIER }} --solution-stack ${{ secrets.AWS_SOLUTION_STACK }}
-                aws elasticbeanstalk deploy --application-name ${{ secrets.AWS_APPLICATION_NAME }} --environment-name ${{ secrets.AWS_ENVIRONMENT_NAME }}
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+
+    - name: Deploy to Elastic Beanstalk
+      run: |
+        pip install awsebcli --upgrade
+        eb deploy SKYCCDistServer-env
