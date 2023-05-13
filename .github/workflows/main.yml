@@ -15,10 +15,10 @@ jobs:
               run: sudo apt install python3-pip
             - name: Install Flask
               run: pip3 install Flask
+            - name: Build Flask application
+              run: python3 -m flask run
             - name: Deploy Flask application to Elastic Beanstalk
               run: |
                 aws elasticbeanstalk create-application --application-name ${{ secrets.AWS_APPLICATION_NAME }}
                 aws elasticbeanstalk create-environment --application-name ${{ secrets.AWS_APPLICATION_NAME }} --environment-name ${{ secrets.AWS_ENVIRONMENT_NAME }} --platform ${{ secrets.AWS_PLATFORM }} --tier ${{ secrets.AWS_TIER }} --solution-stack ${{ secrets.AWS_SOLUTION_STACK }}
                 aws elasticbeanstalk deploy --application-name ${{ secrets.AWS_APPLICATION_NAME }} --environment-name ${{ secrets.AWS_ENVIRONMENT_NAME }}
-            - name: Build Flask application
-              run: python3 -m flask run
