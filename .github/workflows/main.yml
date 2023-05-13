@@ -16,7 +16,7 @@ jobs:
             - name: Install Flask
               run: pip3 install Flask
             - name: Build Flask application
-              run: python3 -m flask build
+              run: python3 -m flask run
             - name: Deploy Flask application to Elastic Beanstalk
               run: |
                 aws elasticbeanstalk create-application --application-name ${{ secrets.AWS_APPLICATION_NAME }}
