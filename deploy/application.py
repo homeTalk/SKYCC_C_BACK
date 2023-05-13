@@ -4,6 +4,31 @@ from flask_restful import Resource, Api
 application =app = Flask(__name__)
 api = Api(application)
 
+
+
+
+
+
+
+import os
+import flask
+
+from connection import s3_connection, s3_put_object
+from config import AWS_S3_BUCKET_NAME, AWS_S3_BUCKET_REGION
+
+s3 = s3_connection()
+
+@app.route('/fileUpload', methods=['POST'])
+def upload():
+    f = request.files['file']
+    f.save("./temp")
+    
+    ret = s3_put_object(s3, AWS_S3_BUCKET_NAME, "./temp", ".temp")
+    if ret :
+        print("파일 저장 성공")
+    else:
+        print("파일 저장 실패")
+
 # Example API
 class MainApi(Resource):
     def get(self):
@@ -13,8 +38,6 @@ api.add_resource(MainApi, '/')
 
 from mission import missionAPI
 api.add_resource(BookBasketApi, '/basket')
-
-
 
 
 @app.route('/mission/<int:mission_category>', methods=['GET'])
