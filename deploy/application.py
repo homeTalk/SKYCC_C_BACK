@@ -1,10 +1,21 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify, make_response
+from flask_restful import Resource, Api
 
 application =app = Flask(__name__)
+api = Api(application)
 
-@app.route('/')
-def home():
-    return 'Hello, World!'
+# Example API
+class MainApi(Resource):
+    def get(self):
+        return {'hello': 'world'}
+
+api.add_resource(MainApi, '/')
+
+from mission import missionAPI
+api.add_resource(BookBasketApi, '/basket')
+
+
+
 
 @app.route('/mission/<int:mission_category>', methods=['GET'])
 def get_mission_details(mission_category):
