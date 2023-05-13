@@ -1,0 +1,24 @@
+on:
+    push:
+      branches:
+        - main
+name: Deploy to Elastic Beanstalk
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Install Python
+              run: sudo apt install python3.8
+            - name: Install Pip
+              run: sudo apt install python3-pip
+            - name: Install Flask
+              run: pip3 install Flask
+            - name: Build Flask application
+              run: python3 -m flask build
+            - name: Deploy Flask application to Elastic Beanstalk
+              run: |
+                aws elasticbeanstalk create-application --application-name <your-application-name>
+                aws elasticbeanstalk create-environment --application-name <your-application-name> --environment-name <your-environment-name> --platform <your-platform> --tier <your-tier> --solution-stack <your-solution-stack>
+                aws elasticbeanstalk deploy --application-name <your-application-name> --environment-name <your-environment-name>
