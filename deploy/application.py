@@ -12,7 +12,7 @@ app.register_blueprint(profile, url_prefix='/profile')
 app.register_blueprint(mission, url_prefix='/mission')
 app.register_blueprint(pic, url_prefix='/photo')
 app.register_blueprint(family, url_prefix='/family')
-app.register_blueprint(schedule, url_prefix='/sche')
+app.register_blueprint(schedule, url_prefix='/schedule')
 
 @app.route('/mission/<int:mission_category>', methods=['POST'])
 def upload(mission_category):
