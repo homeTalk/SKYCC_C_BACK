@@ -12,6 +12,14 @@ app.register_blueprint(mission, url_prefix='/mission')
 app.register_blueprint(pic, url_prefix='/photo')
 app.register_blueprint(family, url_prefix='/family')
 
+@app.route('/mission/<int:mission_category>', methods=['POST'])
+def upload(mission_category):
+    if(mission_category == 2):
+        if 'photo' in request.files:
+            photo = request.files['photo']
+            photo.save('static/images/' + photo.filename)
+            return '사진이 업로드되었습니다.'
+
 
 @app.route('/')
 def home():

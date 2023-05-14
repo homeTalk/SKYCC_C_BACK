@@ -41,9 +41,39 @@ def get_mission_details(mission_category):
 
         return jsonify(response), 200
     elif mission_category == 2:
-        # mission_category가 2인 경우에 대한 동작을 수행합니다.
-        # TODO: mission_category가 2인 경우의 동작 구현
-        return jsonify({"message": "Mission category 2 동작 수행"}), 200
+        mission = {
+            "mission_id": 2,
+            "mission_name": "지금 바로 셀카 찍어서 업로드",
+        }
+        family_members = [
+            {
+                "name": "춘식이",
+                "status": True,
+                "message": "라이언"
+            },
+            {
+                "name": "라이언",
+                "status": False,
+                "message": ""
+            },
+            {
+                "name": "어피치",
+                "status": False,
+                "message": ""
+                       },
+            {
+                "name": "프로도",
+                "status": True,
+                "message": "춘식이"
+            }
+        ]
+
+        response = {
+            "mission": mission,
+            "family_members": family_members
+        }
+
+        return jsonify(response), 200
     elif mission_category == 3:
         # mission_category가 3인 경우에 대한 동작을 수행합니다.
         # TODO: mission_category가 3인 경우의 동작 구현
