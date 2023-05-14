@@ -17,10 +17,9 @@ app.register_blueprint(schedule, url_prefix='/schedule')
 @app.route('/mission/<int:mission_category>', methods=['POST'])
 def upload(mission_category):
     if(mission_category == 2):
-        if 'photo' in request.files:
-            photo = request.files['photo']
-            photo.save('static/images/' + photo.filename)
-            return '사진이 업로드되었습니다.'
+        if 'uri' in request.files:
+            uri = request.files['uri']
+            return uri + "가 들어왔습니다"
 
 
 @app.route('/')

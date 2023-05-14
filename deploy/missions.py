@@ -13,24 +13,24 @@ def get_mission_details(mission_category):
         }
         family_members = [
             {
-                "name": "춘식이",
+                "name": "엄마",
                 "status": True,
-                "message": "라이언"
+                "message": "아빠"
             },
             {
-                "name": "라이언",
+                "name": "아빠",
                 "status": False,
                 "message": ""
             },
             {
-                "name": "어피치",
+                "name": "민재",
                 "status": False,
-                "message": ""
+                "message": "엄마"
                        },
             {
-                "name": "프로도",
+                "name": "민제",
                 "status": True,
-                "message": "춘식이"
+                "message": "아빠"
             }
         ]
 
@@ -47,22 +47,22 @@ def get_mission_details(mission_category):
         }
         family_members = [
             {
-                "name": "춘식이",
+                "name": "엄마",
                 "status": True,
                 "message": "라이언"
             },
             {
-                "name": "라이언",
+                "name": "아빠",
                 "status": False,
                 "message": ""
             },
             {
-                "name": "어피치",
+                "name": "민재",
                 "status": False,
                 "message": ""
                        },
             {
-                "name": "프로도",
+                "name": "민제",
                 "status": True,
                 "message": "춘식이"
             }
